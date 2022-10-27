@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pistol_reload.ogg-4ec33b9241dbe1a75b735ed87cc31503.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx_weapon/pistol_reload.ogg"
+dest_files=[ "res://.import/pistol_reload.ogg-4ec33b9241dbe1a75b735ed87cc31503.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
