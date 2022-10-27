@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/characters/player/feet/idle/survivor-idle_0.png" type="Texture" id=1]
 [ext_resource path="res://assets/characters/player/handgun/idle/survivor-idle_handgun_0.png" type="Texture" id=2]
+[ext_resource path="res://scripts/player/player.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 36.3456
 
 [node name="Player" type="KinematicBody2D"]
+script = ExtResource( 3 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
