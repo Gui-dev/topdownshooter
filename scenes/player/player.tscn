@@ -242,7 +242,7 @@ active = true
 parameters/blend_position = Vector2( 0, 0 )
 
 [node name="body" type="Sprite" parent="sprites"]
-texture = ExtResource( 27 )
+texture = ExtResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="sprites/body"]
 anims/RESET = SubResource( 5 )
@@ -255,3 +255,6 @@ anim_player = NodePath("../animation")
 active = true
 parameters/playback = SubResource( 19 )
 parameters/pistol/blend_position = 0
+
+[node name="barrel" type="Position2D" parent="."]
+position = Vector2( 71, 26 )
