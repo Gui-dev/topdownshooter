@@ -11,10 +11,10 @@ onready var animation_legs: AnimationTree = $sprites/legs/AnimationTree
 onready var animation_body: AnimationTree = $sprites/body/AnimationTree
 onready var animation_mode: AnimationNodeStateMachinePlayback = animation_body.get('parameters/playback')
 onready var barrel: Position2D = $barrel
-export(Resource) var weapon = null
+export(Resource) var weapon setget _set_weapon
 
 
-func _ready() -> void:
+func _draw() -> void:
   animation_mode.travel(weapon.name)
 
 
@@ -48,3 +48,8 @@ func _shoot() -> void:
   bullet.rotation_degrees = rotation_degrees
   bullet.apply_impulse(Vector2.ZERO, Vector2(1000, 0).rotated(rotation))
   get_tree().root.call_deferred('add_child', bullet)
+
+
+func _set_weapon(value: Resource) -> void:
+  weapon = value
+  update()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=179 format=2]
+[gd_scene load_steps=182 format=2]
 
 [ext_resource path="res://assets/characters/player/feet/idle/survivor-idle_0.png" type="Texture" id=1]
 [ext_resource path="res://assets/characters/player/handgun/idle/survivor-idle_handgun_0.png" type="Texture" id=2]
@@ -143,6 +143,9 @@
 [ext_resource path="res://assets/characters/player/rifle/shoot/survivor-shoot_rifle_2.png" type="Texture" id=141]
 [ext_resource path="res://assets/characters/player/rifle/reload/survivor-reload_rifle_11.png" type="Texture" id=142]
 [ext_resource path="res://assets/characters/player/rifle/reload/survivor-reload_rifle_12.png" type="Texture" id=143]
+[ext_resource path="res://scripts/player/weapon_controller.gd" type="Script" id=144]
+[ext_resource path="res://resources/pistol.tres" type="Resource" id=145]
+[ext_resource path="res://resources/rifle.tres" type="Resource" id=146]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 36.3456
@@ -449,6 +452,7 @@ start_node = "pistol"
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 3 )
+weapon = ExtResource( 145 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
@@ -495,3 +499,8 @@ parameters/rifle/blend_position = Vector2( 0, 0 )
 
 [node name="barrel" type="Position2D" parent="."]
 position = Vector2( 71, 26 )
+
+[node name="weapon_controller" type="Node2D" parent="."]
+script = ExtResource( 144 )
+pistol = ExtResource( 145 )
+rifle = ExtResource( 146 )
