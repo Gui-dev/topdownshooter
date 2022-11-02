@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/resource/weapon.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "rifle"
+ammo = 31
+capacity = 31
+max_ammo = 999
+strong = 1
+cooldown = 0.25
+shake = 50

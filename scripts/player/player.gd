@@ -5,13 +5,17 @@ class_name Player
 const Bullet = preload('res://scenes/prefabs/bullet.tscn')
 var speed: float = 200.0
 var motion_velocity: Vector2 = Vector2.ZERO
-var weapon: String = 'pistol'
 var weapon_timer: float = 0.0
 var cooldown: float = 0.3
 onready var animation_legs: AnimationTree = $sprites/legs/AnimationTree
 onready var animation_body: AnimationTree = $sprites/body/AnimationTree
-onready var animation_node: AnimationNodeStateMachinePlayback = animation_body.get('parameters/playback')
+onready var animation_mode: AnimationNodeStateMachinePlayback = animation_body.get('parameters/playback')
 onready var barrel: Position2D = $barrel
+export(Resource) var weapon = null
+
+
+func _ready() -> void:
+  animation_mode.travel(weapon.name)
 
 
 func _process(delta: float) -> void:
@@ -35,7 +39,7 @@ func _physics_process(delta: float) -> void:
 
 func _animations() -> void:
   animation_legs.set('parameters/blend_position', motion_velocity)
-  animation_body.set('parameters/%s/blend_position' % weapon, motion_velocity.angle())
+  animation_body.set('parameters/%s/blend_position' % weapon.name, motion_velocity)
 
 
 func _shoot() -> void:
