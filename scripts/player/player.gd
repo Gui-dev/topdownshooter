@@ -6,11 +6,11 @@ const Bullet = preload('res://scenes/prefabs/bullet.tscn')
 var speed: float = 200.0
 var motion_velocity: Vector2 = Vector2.ZERO
 var weapon_timer: float = 0.0
-var cooldown: float = 0.3
 onready var animation_legs: AnimationTree = $sprites/legs/AnimationTree
 onready var animation_body: AnimationTree = $sprites/body/AnimationTree
 onready var animation_mode: AnimationNodeStateMachinePlayback = animation_body.get('parameters/playback')
 onready var barrel: Position2D = $barrel
+onready var audio: AudioStreamPlayer = $audio
 export(Resource) var weapon setget _set_weapon
 
 
@@ -29,11 +29,11 @@ func _process(delta: float) -> void:
   
   weapon_timer -= delta
   if Input.is_action_pressed('ui_shoot') and weapon_timer <= 0:
-    weapon_timer = cooldown 
+    weapon_timer = weapon.cooldown 
     _shoot()
     
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
   motion_velocity = move_and_slide(motion_velocity)
 
 
@@ -43,11 +43,22 @@ func _animations() -> void:
 
 
 func _shoot() -> void:
-  var bullet = Bullet.instance()
-  bullet.global_position = barrel.global_position
-  bullet.rotation_degrees = rotation_degrees
-  bullet.apply_impulse(Vector2.ZERO, Vector2(1000, 0).rotated(rotation))
-  get_tree().root.call_deferred('add_child', bullet)
+  if weapon.ammo:
+    weapon.ammo -= 1
+    animation_mode.travel('%s_shoot' % weapon.name)
+    _play_sfx(weapon.shoot)
+    var bullet = Bullet.instance()
+    bullet.global_position = barrel.global_position
+    bullet.rotation_degrees = rotation_degrees
+    bullet.apply_impulse(Vector2.ZERO, Vector2(1000, 0).rotated(rotation))
+    get_tree().root.call_deferred('add_child', bullet)
+  else:
+    _play_sfx(weapon.empty)
+
+
+func _play_sfx(sfx: AudioStream) -> void:
+  audio.stream = sfx
+  audio.play()
 
 
 func _set_weapon(value: Resource) -> void:

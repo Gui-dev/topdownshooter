@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=2]
+[gd_scene load_steps=188 format=2]
 
 [ext_resource path="res://assets/characters/player/feet/idle/survivor-idle_0.png" type="Texture" id=1]
 [ext_resource path="res://assets/characters/player/handgun/idle/survivor-idle_handgun_0.png" type="Texture" id=2]
@@ -240,6 +240,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ ExtResource( 2 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../barrel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 71, 26 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "pistol_idle"
@@ -257,6 +269,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 2 ), ExtResource( 29 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 39 ), ExtResource( 28 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 37 ), ExtResource( 40 ), ExtResource( 27 ), ExtResource( 38 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 36 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 31 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../barrel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 73, 28 ) ]
 }
 
 [sub_resource type="Animation" id=26]
@@ -327,6 +351,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 83 ), ExtResource( 85 ), ExtResource( 73 ), ExtResource( 80 ), ExtResource( 68 ), ExtResource( 96 ), ExtResource( 98 ), ExtResource( 99 ), ExtResource( 97 ), ExtResource( 92 ), ExtResource( 102 ), ExtResource( 103 ), ExtResource( 104 ), ExtResource( 105 ), ExtResource( 106 ), ExtResource( 78 ), ExtResource( 72 ), ExtResource( 77 ), ExtResource( 107 ), ExtResource( 108 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../barrel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 90, 23 ) ]
 }
 
 [sub_resource type="Animation" id=29]
@@ -409,6 +445,9 @@ blend_point_4/node = SubResource( 24 )
 blend_point_4/pos = Vector2( 0, -1 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "pistol_shoot"
+
 [sub_resource type="AnimationNodeAnimation" id=32]
 animation = "rifle_idle"
 
@@ -436,17 +475,37 @@ blend_point_3/pos = Vector2( 0, 1 )
 blend_point_4/node = SubResource( 36 )
 blend_point_4/pos = Vector2( 0, -1 )
 
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "rifle_shoot"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=38]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=39]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+switch_mode = 2
+auto_advance = true
+
 [sub_resource type="AnimationNodeStateMachine" id=18]
 states/pistol/node = SubResource( 25 )
 states/pistol/position = Vector2( 345.667, 36.3333 )
+states/pistol_shoot/node = SubResource( 40 )
+states/pistol_shoot/position = Vector2( 571, 36.904 )
 states/rifle/node = SubResource( 37 )
 states/rifle/position = Vector2( 345.815, 168.333 )
-transitions = [ "pistol", "rifle", SubResource( 38 ), "rifle", "pistol", SubResource( 39 ) ]
+states/rifle_shoot/node = SubResource( 41 )
+states/rifle_shoot/position = Vector2( 565.222, 167.995 )
+transitions = [ "pistol", "rifle", SubResource( 38 ), "rifle", "pistol", SubResource( 39 ), "pistol", "pistol_shoot", SubResource( 42 ), "rifle", "rifle_shoot", SubResource( 43 ), "pistol_shoot", "pistol", SubResource( 44 ), "rifle_shoot", "rifle", SubResource( 45 ) ]
 start_node = "pistol"
+graph_offset = Vector2( 0, -91.0455 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=19]
 
@@ -504,3 +563,6 @@ position = Vector2( 71, 26 )
 script = ExtResource( 144 )
 pistol = ExtResource( 145 )
 rifle = ExtResource( 146 )
+
+[node name="audio" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
