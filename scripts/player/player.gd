@@ -31,6 +31,8 @@ func _process(delta: float) -> void:
   if Input.is_action_pressed('ui_shoot') and weapon_timer <= 0:
     weapon_timer = weapon.cooldown 
     _shoot()
+  if Input.is_action_just_pressed('ui_reload') and weapon.ammo < weapon.capacity and weapon.max_ammo > 0:
+    _reload()
     
 
 func _physics_process(_delta: float) -> void:
@@ -54,6 +56,19 @@ func _shoot() -> void:
     get_tree().root.call_deferred('add_child', bullet)
   else:
     _play_sfx(weapon.empty)
+
+
+func _reload() -> void:
+  weapon_timer = 1
+  var diff = weapon.capacity - weapon.ammo
+  if weapon.max_ammo >= diff:
+    weapon.max_ammo -= diff
+    weapon.ammo += diff
+  else:
+    weapon.ammo += weapon.max_ammo
+    weapon.max_ammo = 0
+  animation_mode.travel('%s_reload' % weapon.name)
+  _play_sfx(weapon.reload)
 
 
 func _play_sfx(sfx: AudioStream) -> void:

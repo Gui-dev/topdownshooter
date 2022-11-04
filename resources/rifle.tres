@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "rifle"
-ammo = 10
+ammo = 31
 capacity = 31
 max_ammo = 999
 strong = 1
