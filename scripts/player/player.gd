@@ -11,12 +11,15 @@ onready var animation_body: AnimationTree = $sprites/body/AnimationTree
 onready var animation_mode: AnimationNodeStateMachinePlayback = animation_body.get('parameters/playback')
 onready var barrel: Position2D = $barrel
 onready var audio: AudioStreamPlayer = $audio
+onready var hud: CanvasLayer = $'../HUD'
 export(Resource) var weapon setget _set_weapon
 
 
 func _draw() -> void:
-  animation_mode.travel(weapon.name)
-
+  animation_mode.travel('%s_reload' % weapon.name)
+  hud.ui_update_weapon(weapon.name, weapon.ammo, weapon.max_ammo)  
+  _play_sfx(weapon.reload)
+  
 
 func _process(delta: float) -> void:
   var direction := Input.get_vector('ui_left', 'ui_right', 'ui_up', 'ui_down')
@@ -48,6 +51,7 @@ func _shoot() -> void:
   if weapon.ammo:
     weapon.ammo -= 1
     animation_mode.travel('%s_shoot' % weapon.name)
+    hud.ui_update_weapon(weapon.name, weapon.ammo, weapon.max_ammo)
     _play_sfx(weapon.shoot)
     var bullet = Bullet.instance()
     bullet.global_position = barrel.global_position
@@ -67,7 +71,9 @@ func _reload() -> void:
   else:
     weapon.ammo += weapon.max_ammo
     weapon.max_ammo = 0
+    
   animation_mode.travel('%s_reload' % weapon.name)
+  hud.ui_update_weapon(weapon.name, weapon.ammo, weapon.max_ammo)
   _play_sfx(weapon.reload)
 
 
