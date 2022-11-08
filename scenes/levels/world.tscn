@@ -1,8 +1,102 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/bit_potion.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/ui/hud.gd" type="Script" id=3]
+[ext_resource path="res://assets/background/top_down_background.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/background/top_down_background_Itens.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 24.5714, 56.7143 )
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 28.1311
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 72.5715, 93.1429 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 72.5715, 55.7143 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 38.8572, 43.0715 )
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 14.901
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 14.901
+
+[sub_resource type="CircleShape2D" id=14]
+radius = 9.97958
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 16.8571, 40 )
+
+[sub_resource type="CircleShape2D" id=16]
+radius = 6.13604
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 66.2857, 76.8572 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 31.7143, 34.5715 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 19.1429, 11.5715 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 10.7564, 64.221 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 10.7564, 81.4258 )
+
+[sub_resource type="CircleShape2D" id=21]
+radius = 20.5217
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 10.7564, 24.3453 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 19.3934, 45.086 )
+
+[sub_resource type="CircleShape2D" id=25]
+
+[sub_resource type="CircleShape2D" id=26]
+
+[sub_resource type="CircleShape2D" id=27]
+
+[sub_resource type="CircleShape2D" id=28]
+
+[sub_resource type="CircleShape2D" id=29]
+radius = 38.21
+
+[sub_resource type="StreamTexture" id=30]
+flags = 4
+load_path = "res://.import/top_down_background_Itens.png-7056af8564cce806fb166b705a76e174.stex"
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 57.4286, 17.5714 )
+
+[sub_resource type="RectangleShape2D" id=32]
+extents = Vector2( 60.4286, 37.5714 )
+
+[sub_resource type="CircleShape2D" id=33]
+
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 70, 86.4286 )
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 46.4287, 18.2858 )
+
+[sub_resource type="CircleShape2D" id=36]
+radius = 13.4409
+
+[sub_resource type="CircleShape2D" id=37]
+radius = 7.32381
+
+[sub_resource type="CircleShape2D" id=38]
+radius = 7.32381
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0.533333, 0.176471, 1 )
@@ -33,6 +127,413 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [node name="World" type="Node2D"]
+
+[node name="top-down-background" type="Sprite" parent="."]
+position = Vector2( 962, 517 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 4 )
+
+[node name="colliders" type="Node2D" parent="."]
+
+[node name="items" type="Sprite" parent="colliders"]
+position = Vector2( -1968, -964 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 200.844, 42.322, 71.7497, 138.716 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items/item"]
+position = Vector2( 0.285828, 2.99994 )
+shape = SubResource( 7 )
+
+[node name="items2" type="Sprite" parent="colliders"]
+position = Vector2( -1358, -1006 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 332.385, 23.1888, 169.808, 174.591 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items2"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items2/item"]
+position = Vector2( -9.1427, 0.999939 )
+shape = SubResource( 8 )
+
+[node name="items3" type="Sprite" parent="colliders"]
+position = Vector2( -1383, -218 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 310.861, 228.871, 186.549, 246.341 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items3"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items3/item"]
+position = Vector2( -1.14294, 0.285675 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 9 )
+
+[node name="items4" type="Sprite" parent="colliders"]
+position = Vector2( -544, 1307 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 548.611, 641.371, 173.243, 234.906 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items4"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items4/item"]
+position = Vector2( -1.14294, 47.7144 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 10 )
+
+[node name="collision2" type="CollisionShape2D" parent="colliders/items4/item"]
+position = Vector2( 8.57147, -52.0714 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 11 )
+
+[node name="items5" type="Sprite" parent="colliders"]
+position = Vector2( -2053, 1206 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 75.8623, 703.034, 223.161, 120.389 )
+
+[node name="items6" type="Sprite" parent="colliders"]
+position = Vector2( -586, 2248 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 528.057, 948.026, 220.224, 190.861 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items6"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items6/item"]
+position = Vector2( -44.8571, -34.2856 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 12 )
+
+[node name="collision2" type="CollisionShape2D" parent="colliders/items6/item"]
+position = Vector2( 34, 24.0001 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 13 )
+
+[node name="collision3" type="CollisionShape2D" parent="colliders/items6/item"]
+position = Vector2( -54.5714, 45.7144 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 14 )
+
+[node name="items7" type="Sprite" parent="colliders"]
+position = Vector2( 34.9998, 2045 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 777.521, 930.384, 50.7736, 96.7871 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items7"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items7/item"]
+position = Vector2( -1.4285, 1.42865 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 23 )
+
+[node name="items8" type="Sprite" parent="colliders"]
+position = Vector2( -219, -12 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 637.042, 391.214, 111.902, 110.232 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items8"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items8/item"]
+position = Vector2( -0.714213, 1.42882 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 16 )
+
+[node name="items9" type="Sprite" parent="colliders"]
+position = Vector2( 809, -47 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 787.358, 267.364, 233.826, 232.155 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items9"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items9/item"]
+position = Vector2( 28.8571, 2.57143 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 17 )
+
+[node name="collision2" type="CollisionShape2D" parent="colliders/items9/item"]
+position = Vector2( -71.1428, 68 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 18 )
+
+[node name="collision3" type="CollisionShape2D" parent="colliders/items9/item"]
+position = Vector2( 18.2857, -93.5714 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 19 )
+
+[node name="items10" type="Sprite" parent="colliders"]
+position = Vector2( 952, 714 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 608.841, 226.529, 176.133, 130.31 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items10"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items10/item"]
+position = Vector2( 26.1768, 7.11293 )
+rotation = 0.843611
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 15 )
+
+[node name="collision2" type="CollisionShape2D" parent="colliders/items10/item"]
+position = Vector2( 5.81799, -1.47597 )
+rotation = 0.912595
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 20 )
+
+[node name="collision3" type="CollisionShape2D" parent="colliders/items10/item"]
+position = Vector2( -14.4677, -9.76166 )
+rotation = 0.912595
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 21 )
+
+[node name="collision4" type="CollisionShape2D" parent="colliders/items10/item"]
+position = Vector2( -54.8966, 23.9211 )
+rotation = 1.17461
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 22 )
+
+[node name="items11" type="Sprite" parent="colliders"]
+position = Vector2( 1067, -867 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 658.77, 149.998, 107.47, 54.4149 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items11"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items11/item"]
+position = Vector2( -0.714203, -0.285477 )
+rotation = 1.59869
+scale = Vector2( 1, 1 )
+shape = SubResource( 24 )
+
+[node name="items12" type="Sprite" parent="colliders"]
+position = Vector2( 1363, -347 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 1054.94, 323.771, 157.54, 136.991 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items12"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items12/item"]
+position = Vector2( -9.99997, -0.571426 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 25 )
+
+[node name="items13" type="Sprite" parent="colliders"]
+position = Vector2( 777, 1228 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 904.251, 498.436, 178.089, 171.239 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items13"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items13/item"]
+position = Vector2( -9.99997, -0.571426 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 26 )
+
+[node name="items14" type="Sprite" parent="colliders"]
+position = Vector2( 1302, 1363 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 1065.22, 736.036, 102.743, 106.168 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items14"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items14/item"]
+position = Vector2( -9.99997, -0.571426 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 27 )
+
+[node name="items15" type="Sprite" parent="colliders"]
+position = Vector2( 1874, 1195 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 1245.29, 670.965, 184.938, 171.239 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items15"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items15/item"]
+position = Vector2( -9.99997, -0.571426 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 28 )
+
+[node name="items16" type="Sprite" parent="colliders"]
+position = Vector2( 2372, -547 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 1361.73, 330.621, 184.938, 164.39 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items16"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items16/item"]
+position = Vector2( -1.4285, -0.571426 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 29 )
+
+[node name="items17" type="Sprite" parent="colliders"]
+position = Vector2( 2347, -71.0001 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1620.68, 653.882, 155.586, 94.8694 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items17"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items17/item"]
+position = Vector2( -1.14294, -8.14285 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 31 )
+
+[node name="items18" type="Sprite" parent="colliders"]
+position = Vector2( 3171, 1385 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1408.18, 36.3805, 155.586, 140.407 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items18"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items18/item"]
+position = Vector2( -2.14282, -2.4285 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 32 )
+
+[node name="items19" type="Sprite" parent="colliders"]
+position = Vector2( 3099, 2525 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1635.86, 951.455, 182.149, 163.175 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items19"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items19/item"]
+position = Vector2( -2.14282, -2.4285 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 33 )
+
+[node name="items20" type="Sprite" parent="colliders"]
+position = Vector2( 3794, -118 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1749.71, 273.168, 208.713, 242.866 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items20"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items20/item"]
+position = Vector2( 9.42847, -2.14293 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 34 )
+
+[node name="items21" type="Sprite" parent="colliders"]
+position = Vector2( 4187, -813 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1833.19, 201.068, 144.202, 68.306 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items21"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items21/item"]
+position = Vector2( -3.28577, -2.85712 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 35 )
+
+[node name="items22" type="Sprite" parent="colliders"]
+position = Vector2( 4429, -232 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1981.19, 303.527, 166.97, 147.996 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items22"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items22/item"]
+position = Vector2( -8.00037, 2.00002 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 36 )
+
+[node name="items23" type="Sprite" parent="colliders"]
+position = Vector2( 4470, 471 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 2003.96, 497.06, 151.791, 136.612 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items23"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items23/item"]
+position = Vector2( -12.0004, 3.14288 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 37 )
+
+[node name="items24" type="Sprite" parent="colliders"]
+position = Vector2( 4462, 1154 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1973.6, 680.927, 170.765, 159.381 )
+
+[node name="item" type="StaticBody2D" parent="colliders/items24"]
+
+[node name="collision" type="CollisionShape2D" parent="colliders/items24/item"]
+position = Vector2( -12.0004, 3.14288 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 38 )
+
+[node name="items25" type="Sprite" parent="colliders"]
+position = Vector2( 4477, 2075 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1453.71, 1022.46, 147.996, 102.459 )
+
+[node name="items26" type="Sprite" parent="colliders"]
+position = Vector2( 3314, -1323 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1453.71, 1022.46, 147.996, 102.459 )
+
+[node name="items27" type="Sprite" parent="colliders"]
+position = Vector2( 973, -1323 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1453.71, 1022.46, 147.996, 102.459 )
+
+[node name="items28" type="Sprite" parent="colliders"]
+position = Vector2( 1109, 2030 )
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 30 )
+region_enabled = true
+region_rect = Rect2( 1453.71, 1022.46, 147.996, 102.459 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 196, 930 )
