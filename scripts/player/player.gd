@@ -49,6 +49,7 @@ func _animations() -> void:
 
 func _shoot() -> void:
   if weapon.ammo:
+    GameManager.camera.shake(weapon.shake)
     weapon.ammo -= 1
     animation_mode.travel('%s_shoot' % weapon.name)
     hud.ui_update_weapon(weapon.name, weapon.ammo, weapon.max_ammo)
