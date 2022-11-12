@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/bit_potion.ttf" type="DynamicFontData" id=2]
@@ -8,12 +8,41 @@
 [ext_resource path="res://assets/house/house_in.png" type="Texture" id=6]
 [ext_resource path="res://scripts/interactions/house.gd" type="Script" id=7]
 [ext_resource path="res://scripts/camera/camera.gd" type="Script" id=8]
+[ext_resource path="res://scripts/interactions/police_car.gd" type="Script" id=9]
+[ext_resource path="res://assets/siren_and_block_white/police_siren.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/siren_and_block_white/block_white.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=39]
 extents = Vector2( 65, 96.5 )
 
 [sub_resource type="RectangleShape2D" id=40]
 extents = Vector2( 249.5, 286 )
+
+[sub_resource type="RectangleShape2D" id=41]
+extents = Vector2( 65.5, 184.5 )
+
+[sub_resource type="StreamTexture" id=42]
+flags = 4
+load_path = "res://.import/top_down_background_Itens.png-7056af8564cce806fb166b705a76e174.stex"
+
+[sub_resource type="RectangleShape2D" id=43]
+extents = Vector2( 65.5, 162.5 )
+
+[sub_resource type="StreamTexture" id=44]
+flags = 4
+load_path = "res://.import/block_white.png-2206b76ccf7498eef6aae6cada429a06.stex"
+
+[sub_resource type="StreamTexture" id=45]
+flags = 4
+load_path = "res://.import/block_white.png-2206b76ccf7498eef6aae6cada429a06.stex"
+
+[sub_resource type="StreamTexture" id=46]
+flags = 4
+load_path = "res://.import/block_white.png-2206b76ccf7498eef6aae6cada429a06.stex"
+
+[sub_resource type="StreamTexture" id=47]
+flags = 4
+load_path = "res://.import/block_white.png-2206b76ccf7498eef6aae6cada429a06.stex"
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 24.5714, 56.7143 )
@@ -221,6 +250,90 @@ script = ExtResource( 8 )
 [node name="timer" type="Timer" parent="camera"]
 
 [node name="tween" type="Tween" parent="camera"]
+
+[node name="police_cars" type="Node2D" parent="."]
+
+[node name="police_car" type="StaticBody2D" parent="police_cars"]
+position = Vector2( 649, -1212 )
+script = ExtResource( 9 )
+
+[node name="texture" type="Sprite" parent="police_cars/police_car"]
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 159, 365, 57, 125 )
+
+[node name="collision" type="CollisionShape2D" parent="police_cars/police_car"]
+position = Vector2( -4.5, 1.5 )
+shape = SubResource( 41 )
+
+[node name="lights" type="Node2D" parent="police_cars/police_car"]
+
+[node name="light_blue" type="Light2D" parent="police_cars/police_car/lights"]
+visible = false
+position = Vector2( -43.5, -22 )
+scale = Vector2( 0.4375, 0.212499 )
+texture = ExtResource( 11 )
+color = Color( 0, 0.462745, 1, 1 )
+
+[node name="light_red" type="Light2D" parent="police_cars/police_car/lights"]
+visible = false
+position = Vector2( 22.5, -20.5 )
+scale = Vector2( 0.4375, 0.2125 )
+texture = ExtResource( 11 )
+color = Color( 1, 0, 0, 1 )
+
+[node name="audio_siren" type="AudioStreamPlayer" parent="police_cars/police_car"]
+stream = ExtResource( 10 )
+volume_db = -20.0
+
+[node name="police_car2" type="StaticBody2D" parent="police_cars"]
+position = Vector2( 5393, -109 )
+script = ExtResource( 9 )
+
+[node name="texture" type="Sprite" parent="police_cars/police_car2"]
+scale = Vector2( 3.5, 3.5 )
+texture = SubResource( 42 )
+region_enabled = true
+region_rect = Rect2( 1512, 735, 55, 108 )
+
+[node name="collision" type="CollisionShape2D" parent="police_cars/police_car2"]
+position = Vector2( -4.5, -3.5 )
+shape = SubResource( 43 )
+
+[node name="lights" type="Node2D" parent="police_cars/police_car2"]
+
+[node name="light_blue" type="Light2D" parent="police_cars/police_car2/lights"]
+visible = false
+position = Vector2( -34.75, 54.75 )
+scale = Vector2( 0.21875, 0.231249 )
+texture = SubResource( 44 )
+color = Color( 0, 0.462745, 1, 1 )
+
+[node name="light_red" type="Light2D" parent="police_cars/police_car2/lights"]
+visible = false
+position = Vector2( -16.2499, 54.75 )
+scale = Vector2( 0.231252, 0.218751 )
+texture = SubResource( 45 )
+color = Color( 1, 0, 0, 1 )
+
+[node name="light_white" type="Light2D" parent="police_cars/police_car2/lights"]
+visible = false
+position = Vector2( 7.87476, 55 )
+scale = Vector2( 0.378133, 0.218751 )
+texture = SubResource( 46 )
+color = Color( 1, 0, 0, 1 )
+
+[node name="light_blue2" type="Light2D" parent="police_cars/police_car2/lights"]
+visible = false
+position = Vector2( 31, 55 )
+scale = Vector2( 0.21875, 0.231249 )
+texture = SubResource( 47 )
+color = Color( 0.0117647, 0.235294, 0.498039, 1 )
+
+[node name="audio_siren" type="AudioStreamPlayer" parent="police_cars/police_car2"]
+stream = ExtResource( 10 )
+volume_db = -20.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 215, 865 )

@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/player/player.gd"
 }, {
+"base": "StaticBody2D",
+"class": "PoliceCar",
+"language": "GDScript",
+"path": "res://scripts/interactions/police_car.gd"
+}, {
 "base": "Resource",
 "class": "Weapon",
 "language": "GDScript",
@@ -50,6 +55,7 @@ _global_script_class_icons={
 "HUD": "",
 "House": "",
 "Player": "",
+"PoliceCar": "",
 "Weapon": "",
 "WeaponController": ""
 }
