@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/bit_potion.ttf" type="DynamicFontData" id=2]
@@ -11,9 +11,7 @@
 [ext_resource path="res://scripts/interactions/police_car.gd" type="Script" id=9]
 [ext_resource path="res://assets/siren_and_block_white/police_siren.ogg" type="AudioStream" id=10]
 [ext_resource path="res://assets/siren_and_block_white/block_white.png" type="Texture" id=11]
-[ext_resource path="res://scenes/enemies/zombie_girl.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/enemies/zombie_man.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/enemies/zombie_boy.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=39]
 extents = Vector2( 65, 96.5 )
@@ -852,12 +850,6 @@ text = "30
 
 [node name="ZombieMan" parent="zombies" instance=ExtResource( 13 )]
 position = Vector2( 456, 951 )
-
-[node name="ZombieBoy" parent="zombies" instance=ExtResource( 14 )]
-position = Vector2( 426, 831 )
-
-[node name="ZombieGirl" parent="zombies" instance=ExtResource( 12 )]
-position = Vector2( 540, 838 )
 
 [connection signal="body_entered" from="house_interaction/house/area_house" to="house_interaction/house" method="_on_area_house_body_entered"]
 [connection signal="body_exited" from="house_interaction/house/area_house" to="house_interaction/house" method="_on_area_house_body_exited"]

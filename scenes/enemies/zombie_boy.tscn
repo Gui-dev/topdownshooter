@@ -28,11 +28,12 @@ radius = 22.0907
 [node name="ZombieBoy" type="KinematicBody2D"]
 
 [node name="texture" type="AnimatedSprite" parent="."]
+rotation = 1.5708
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "idle"
 playing = true
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2( 2, 18 )
+position = Vector2( -19, 2 )
 shape = SubResource( 2 )
