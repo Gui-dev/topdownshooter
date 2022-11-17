@@ -7,7 +7,7 @@ onready var tween: Tween = $tween
 
 func _on_area_house_body_entered(body: Node) -> void:
   if body.name.match('Player'):
-    tween.interpolate_property(
+    var _twee_props = tween.interpolate_property(
       texture_house_out, 
       'modulate:a',
       1,
@@ -16,12 +16,12 @@ func _on_area_house_body_entered(body: Node) -> void:
       Tween.TRANS_LINEAR,
       Tween.EASE_OUT  
     )
-    tween.start()
+    var _twee_start = tween.start()
 
 
 func _on_area_house_body_exited(body: Node) -> void:
   if body.name.match('Player'):
-    tween.interpolate_property(
+    var _twee_props = tween.interpolate_property(
       texture_house_out, 
       'modulate:a',
       0,
@@ -30,4 +30,4 @@ func _on_area_house_body_exited(body: Node) -> void:
       Tween.TRANS_LINEAR,
       Tween.EASE_OUT  
     )
-    tween.start()
+    var _twee_start = tween.start()
