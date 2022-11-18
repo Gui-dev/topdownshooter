@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name Player
 
-
+signal noise(player)
 const Bullet = preload('res://scenes/prefabs/bullet.tscn')
 var speed: float = 200.0
 var motion_velocity: Vector2 = Vector2.ZERO
@@ -55,6 +55,7 @@ func _shoot() -> void:
   if weapon.ammo:
     GameManager.camera.shake(weapon.shake)
     weapon.ammo -= 1
+    emit_signal('noise', global_position)
     animation_mode.travel('%s_shoot' % weapon.name)
     hud.ui_update_weapon(weapon.name, weapon.ammo, weapon.max_ammo)
     _play_sfx(weapon.shoot)
