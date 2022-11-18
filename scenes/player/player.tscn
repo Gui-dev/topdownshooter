@@ -532,6 +532,7 @@ graph_offset = Vector2( 0, -91.0455 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=19]
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 3 )
 weapon = ExtResource( 145 )
 

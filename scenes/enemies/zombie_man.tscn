@@ -28,6 +28,7 @@ animations = [ {
 radius = 25.005
 
 [node name="ZombieMan" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 9 )
 
 [node name="texture" type="AnimatedSprite" parent="."]
