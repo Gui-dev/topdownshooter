@@ -2,6 +2,7 @@ extends KinematicBody2D
 class_name Zombie
 
 
+const Blood = preload('res://scenes/prefabs/blood.tscn')
 const ACCELERATION: int = 100
 enum State {IDLE, FOLLOW, LISTEN}
 var state = State.IDLE
@@ -20,7 +21,7 @@ onready var seek_player: Area2D = $SeekPlayer
 
 
 func _ready() -> void:
-  player.connect('noise', self, '_on_noise')
+  var _player_connect = player.connect('noise', self, '_on_noise')
 
 
 func _physics_process(delta: float) -> void:
@@ -51,8 +52,21 @@ func _physics_process(delta: float) -> void:
       
       
   velocity = move_and_slide(velocity)    
+
+
+func apply_damage(damage: int) -> void:
+  health -= damage
+  if health <= 0:
+    _death()
   
 
+func _death() -> void:
+  var blood = Blood.instance()
+  get_tree().root.call_deferred('add_child', blood)
+  blood.global_position = global_position
+  blood.rotation_degrees = rotation_degrees
+  queue_free()
+  
 
 func _set_animation(anim: String) -> void:
   if animation != anim:
