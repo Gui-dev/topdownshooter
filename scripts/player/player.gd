@@ -6,6 +6,7 @@ const Bullet = preload('res://scenes/prefabs/bullet.tscn')
 var speed: float = 200.0
 var motion_velocity: Vector2 = Vector2.ZERO
 var weapon_timer: float = 0.0
+var health: int = 100
 onready var animation_legs: AnimationTree = $sprites/legs/AnimationTree
 onready var animation_body: AnimationTree = $sprites/body/AnimationTree
 onready var animation_mode: AnimationNodeStateMachinePlayback = animation_body.get('parameters/playback')
@@ -44,6 +45,24 @@ func _process(delta: float) -> void:
 
 func _physics_process(_delta: float) -> void:
   motion_velocity = move_and_slide(motion_velocity)
+
+
+func apply_damage(value: int) -> void:
+  health -= value
+  hud.ui_update_health(health)
+  
+  if health <= 0:
+    _death()
+  else:
+    pass
+  
+
+func _death() -> void:
+  set_process(false)
+  set_physics_process(false)
+  get_node('collision').queue_free()
+  get_node('sprites').queue_free()
+  GameManager.player_death = true
 
 
 func _animations() -> void:

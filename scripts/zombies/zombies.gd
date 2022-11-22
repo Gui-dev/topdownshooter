@@ -13,6 +13,7 @@ var timer_attack: float = 0.0
 export(int) var health = 3
 export(int) var speed = 100
 export var distance_follow := 750
+export(int) var distance_attack = 50
 export(float) var attack_cooldown = 1.0
 export(float) var strong = 5.0
 onready var texture: AnimatedSprite = $texture
@@ -25,6 +26,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+  if GameManager.player_death:
+    _enter_state(State.IDLE)
   match state:
     State.IDLE:
       _set_animation('idle')
@@ -37,6 +40,11 @@ func _physics_process(delta: float) -> void:
       var angle = direction.angle()
       velocity = velocity.move_toward(direction * speed, ACCELERATION * delta)
       global_rotation = lerp_angle(global_rotation, angle, 0.05)
+      var distance = global_position.distance_to(player.global_position)
+      timer_attack += delta
+      if distance <= distance_attack and timer_attack >= attack_cooldown and not GameManager.player_death:
+        timer_attack = 0
+        player.apply_damage(strong)
       
     State.LISTEN:
       _set_animation('walk')
