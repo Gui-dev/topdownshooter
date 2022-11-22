@@ -2,9 +2,14 @@ extends CanvasLayer
 class_name HUD
 
 
+onready var hp: ProgressBar = $ui_game_player/player/hp
 onready var weapon_name_label: Label = $ui_game_player/weapon/weapon_name
 onready var ammo_label: Label = $ui_game_player/weapon/ammo
 onready var max_ammo_label: Label = $ui_game_player/weapon/max_ammo
+
+
+func ui_update_health(health) -> void:
+  hp.value = health
 
 
 func ui_update_weapon(weapon_name: String, ammo: int, max_ammo: int) -> void:
