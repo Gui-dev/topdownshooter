@@ -11,7 +11,7 @@ func _ready() -> void:
   get_child(random_blood).visible = true
   var _tween_props = tween.interpolate_property(self, 'modulate:a', 1, 0, 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
   var _tween_start = tween.start()
-
+ 
 
 func _on_tween_all_completed() -> void:
   queue_free()

@@ -80,7 +80,7 @@ func _shoot() -> void:
     _play_sfx(weapon.shoot)
     var bullet = Bullet.instance()
     bullet.global_position = barrel.global_position
-    bullet.rotation_degrees = rotation_degrees
+    bullet.global_rotation = global_rotation
     bullet.apply_impulse(Vector2.ZERO, Vector2(1000, 0).rotated(rotation))
     get_tree().root.call_deferred('add_child', bullet)
   else:

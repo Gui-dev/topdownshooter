@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
     ) * delta + default_offset 
 
 
-func shake(shake_strong: float, shake_duration: float = 0.4, shake_limit: float = 100) -> void:
+func shake(shake_strong: float, shake_duration: float = 0.4, shake_limit: float = 100.0) -> void:
   shake_amount += shake_strong
   if shake_amount > shake_limit:
     shake_amount = shake_limit

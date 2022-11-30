@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="ZombieBoss" type="KinematicBody2D"]
+
+[node name="texture" type="Sprite" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="."]
+
+[node name="animation" type="AnimationPlayer" parent="."]
+
+[node name="timer_attack" type="Timer" parent="."]

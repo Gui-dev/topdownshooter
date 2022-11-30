@@ -66,13 +66,23 @@ func apply_damage(damage: int) -> void:
   health -= damage
   if health <= 0:
     _death()
-  
+  else:
+    _blink()
+
+
+func _blink() -> void:
+  modulate = Color.red
+  yield(get_tree().create_timer(.2), 'timeout')
+  modulate = Color.white
+
 
 func _death() -> void:
   var blood = Blood.instance()
-  get_tree().root.call_deferred('add_child', blood)
+  get_node('../../').zombies_death += 1
+  get_node('../../HUD').ui_update_zombie_death()
+  get_node('../../content').add_child(blood)
   blood.global_position = global_position
-  blood.rotation_degrees = rotation_degrees
+  blood.global_rotation = global_rotation
   queue_free()
   
 

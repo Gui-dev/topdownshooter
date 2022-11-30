@@ -6,7 +6,7 @@ onready var tween: Tween = $tween
 
 
 func _on_area_house_body_entered(body: Node) -> void:
-  if body.name.match('Player'):
+  if body.name == 'Player':
     var _twee_props = tween.interpolate_property(
       texture_house_out, 
       'modulate:a',
@@ -20,7 +20,7 @@ func _on_area_house_body_entered(body: Node) -> void:
 
 
 func _on_area_house_body_exited(body: Node) -> void:
-  if body.name.match('Player'):
+  if body.name == 'Player':
     var _twee_props = tween.interpolate_property(
       texture_house_out, 
       'modulate:a',
