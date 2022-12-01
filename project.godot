@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "Zombie",
 "language": "GDScript",
 "path": "res://scripts/zombies/zombies.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "ZombieSkeleton",
+"language": "GDScript",
+"path": "res://scripts/zombies/skeleton.gd"
 } ]
 _global_script_class_icons={
 "Blood": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "SeekPlayer": "",
 "Weapon": "",
 "WeaponController": "",
-"Zombie": ""
+"Zombie": "",
+"ZombieSkeleton": ""
 }
 
 [application]
