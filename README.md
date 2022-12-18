@@ -1,6 +1,6 @@
-<!--# Duck Hunt Clone
+# Topdown Shooter
 
-Duck Hunt is a classic NES console game, created to learn game development.
+Topdown Shooter is a classic game, created to learn game development.
 
 ## Tecnologias
 
@@ -11,24 +11,25 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## Screenshot
 
 <p align="center">
-  <img alt="Duck Hunt" src=".screens/game.png" width="100%">
-  <img alt="Duck Hunt" src=".screens/game_2.png" width="100%">
+  <img alt="Topdown" src="./.screens/1.png" width="100%">
+  <img alt="Topdown" src="./.screens/2.png" width="100%">
+  <img alt="Topdown" src="./.screens/3.png" width="100%"/>
 </p>
 
 ## Features
 
-- [] Avoid obstacles (collision)
+- [x] Avoid obstacles (collision)
 - [x] Animation on walk/idle
 - [x] Attack with animation
 - [x] Player & monster stats
-- [] Monsters tries to reach the player
-- [] Monsters attacks
-- [] Player dies
-- [] UI bars
-- [] Monsters wander around when player's near
-- [ ] A-Star algorithm when monsters trying to reach the player
+- [x] Monsters tries to reach the player
+- [x] Monsters attacks
+- [x] Player dies
+- [x] UI bars
+- [x] Monsters wander around when player's near
+- [] A-Star algorithm when monsters trying to reach the player
 - [] A cool map
-- [] Animation on attack
+- [x] Animation on attack
 - [] Stats bars on monsters
 - [] Ranged monsters and weapons
--->
+
